@@ -1,0 +1,78 @@
+<!doctype html5>
+
+<html>
+<head>
+<link rel="icon" type="image/png" href="icon.png">
+<title>SQUARE IT</title>
+<!-- <script type="text/javascript" src="phonegap.js"></script> -->
+<link type="text/css" rel="stylesheet" href="style/style.css">
+<link type="text/css" rel="stylesheet" href="style/fontello.css">
+<link type="text/css" rel="stylesheet" href="style/animation.css">
+</head>
+
+<body>
+
+<article>
+	<div id="start-screen">
+		<div id="title">SQUARE IT!</div>
+		<br><br>
+		<div id="start-screen-buttons">
+			<img id="ex" src="images/ex.png">
+			<div id="start-button">START</div>
+			<div id="rules">
+				2 players play turn by turn by clicking/tapping a block.<br>
+				The one who occupies 4 squares which can be conected to form a square is the winner.<br>
+				Tap/click to see example.
+			</div>
+			<div id="grid-size-picker">
+				<select id="grid-size-select">
+					<option value="6" selected>6 X 6</option>
+					<option value="7">7 X 7</option>
+					<option value="8">8 X 8</option>
+				</select>
+			</div>
+		</div>
+	</div>
+
+	<div id="game-screen">
+		<div id="game-divs-container">
+			<!-- <div class="game-div-6" id="game-div-70"></div>
+			<div class="game-div-6" id="game-div-71"></div>
+			<div class="game-div-6" id="game-div-72"></div>
+			<div class="game-div-6" id="game-div-73"></div>
+			<div class="game-div-6" id="game-div-74"></div>
+			<div class="game-div-6" id="game-div-75"></div> -->
+		</div>
+
+		<footer id="footer">
+			<span class="option" id="retire">Retire<i class="icon-cancel-circled"></i></span>
+			<span class="option" id="toggle-sound">Music<i class="icon-megaphone"></i></span>
+			<span class="option" id="undo">Undo<i class="icon-left-open"></i></span>
+		</footer>
+	</div>
+
+	<div id="winner"><div id="winner-details"></div></div>
+
+</article>
+
+<audio id="background">
+	<source src="audio/background.mp3" type="audio/mpeg">
+</audio>
+
+</body>
+
+<script src="js/jquery-2.1.3.min.js">
+</script>
+<script src="js/script.js">
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-67823568-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</html>

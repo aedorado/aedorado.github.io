@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<widget xmlns = "http://www.w3.org/ns/widgets"
+    xmlns:gap = "http://phonegap.com/ns/1.0"
+    id        = "com.anurageldorado.www"
+    versionCode="1"
+    version   = "1.0">
+
+    <name>CONNECT 5</name>
+    <description>
+        An awesome game where you need to connect 5 blocks to win.
+    </description>
+    
+    <author href="" 
+    email="annurag94@gmail.com">
+    Anurag El Dorado
+    </author>
+    
+    <gap:platform name="ios" />
+    <gap:platform name="android" />
+    <gap:platform name="winphone" />
+    <gap:plugin name="org.apache.cordova.media" version="0.2.3" />
+    
+    <platform name="android">
+        <icon src="icon.png"/>
+    </platform>
+
+    <preference name="phonegap-version" value="3.3.0" />
+    
+    <preference name="orientation" value="portrait" />
+    
+    <preference name="fullscreen" value="true" />
+    
+    <preference name="webviewbounce" value="true" />
+    <preference name="DisallowOverscroll" value="true"/>
+    <preference name="disallowOverscroll" value="true" />
+    
+    <preference name="exit-on-suspend" value="true" />
+    
+    <preference name="prerendered-icon" value="false" />
+    
+    <preference name="android-minSdkVersion" value="12" />
+    
+    <preference name="android-installLocation" value="auto" />
+    
+    <preference name="BackgroundColor" value="0xffffffff "/>
+    
+    <preference name="KeepRunning" value="false"/>
+    
+    <access origin="*" subdomains="true" />
+    <preference name="permissions" value="none"/>
+
+    <feature name="Media">
+        <param name="android-package" value="org.apache.cordova.media.AudioHandler" />
+    </feature>
+
+    
+</widget>
+    
+    

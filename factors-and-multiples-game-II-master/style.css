@@ -1,0 +1,125 @@
+* {
+	margin : 0px;
+	padding: 0px;
+	/*transition: all 1s ease;*/
+}
+
+body {
+	height: 100%;
+	background: url('image01.jpg');
+}
+
+article {
+    height: 80%;
+    right: 8%;
+    top: 16%;
+    overflow: auto;
+    position: absolute;
+    width: 60%;
+}
+
+article div.clickable {
+	background-color: #674172;
+	height : 7%;
+	width : 19.99%;
+	float: left;
+	text-align: center;
+	color: white;
+	padding-top: 1.25%;
+	font-size: 18px;
+	min-width: 17px;
+}
+
+article div.unclickable {
+	background-color: #674172;
+	height : 7%;
+	width : 19.99%;
+	float: left;
+	text-align: center;
+	color: white;
+	padding-top: 1.25%;
+	font-size: 18px;
+	min-width: 17px;
+}
+
+article div.clickable:hover {
+	background-color: red;
+}
+
+#fam {
+    background-color: black;
+    border-radius: 10px;
+    color: #bdc3c7;
+    font-family: Tahoma;
+    font-size: 26px;
+    padding: 10px;
+    position: absolute;
+    right: 25%;
+    top: 5%;
+}
+
+
+#info {
+    background-color: #4b77be;
+    border-radius: 10px;
+    font-family: sans-serif;
+    font-size: 20px;
+    margin-left: 5px;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+    top: 50%;
+    transition: height 1s ease 0s;
+    width: 22%;
+}
+
+#info div {
+	position: relative;
+	padding: 2px;
+	-moz-transition: height 1s;
+    -webkit-transition: height 1s ;
+}
+
+#winner {
+
+}
+
+#rules {
+    background-color: #19b5fe;
+    border-radius: 10px;
+    font-family: Arial;
+    font-size: 16px;
+    margin: 10px;
+    max-width: 300px;
+    padding: 10px;
+    position: fixed;
+}
+
+#notFact {
+	opacity: 0;
+	background-color: #86E2D5;
+}
+
+#restart {
+    background-color: #22a7f0;
+    border: 0 none;
+    border-radius: 4px;
+    height: 50px;
+    position: absolute;
+    right: 10%;
+    top: 5%;
+    width: 100px;
+}
+
+#restart:active{
+	background-color: #BF55EC;
+}
+
+@media (max-width: 800px) {
+  #fam, #rules {
+    display: none;
+  }
+  #info {
+  	top :10%;
+  }
+}

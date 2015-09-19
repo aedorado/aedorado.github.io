@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang='en'>
+<head>
+	<style type="text/css">
+
+	* {
+		margin : 0;
+		padding : 0;
+	}
+
+	body, html {
+		height : 100%;
+	}
+
+	canvas {
+		position : fixed;
+		background-color : black;
+		/*cursor : none;*/
+	}
+
+	canvas#buf {
+		display : none;
+	}
+
+	</style>
+	<meta charset='utf-8' />
+	<script>
+
+		MAX_RAD = 50;
+		points = 0;
+		highscore = 0;
+		maxballs = 45;
+		balls = [];
+		ensured = null;
+		animateTime = null;
+		simaTime = null;
+		balltimer = null;
+		gameStarted = 0;
+		reaction = 0;
+		radius = 20;
+		danger = ["#D91E18", "#F22613", "#D64541", "#CF000F", "#F64747", "#FF0000", "#C0392B", "#96281B", "#FF0000", "#FF0000", "#FF0000", "#FF0000"];
+		safe = ["#F7CA18", "#95A5A6", "#00B16A", "#2ECC71", "#3FC380", "#19B5FE", "#3A539B", "#52B3D9", "#8E44AD", "#9A12B3", "#BFBFBF"];
+		window.onload = init;
+		window.onresize = respond;
+
+		function init() {
+			window.addEventListener("mousemove", cursor, false);
+			window.addEventListener("mouseup", start, true);
+			can = document.getElementById('can');
+			buf = document.getElementById('buf');
+			respond();
+			buf.height = can.height;
+			buf.width = can.width;
+			ctx = can.getContext('2d');
+			bufctx = buf.getContext('2d');
+			setInterval(repaints, 1000);
+			balltimer = setInterval(addBalls, 70);
+			defaulti();
+			begin();
+			//simaTime = setInterval(simAnimate, 50);
+			//setInterval(rectify, 100);
+		}
+
+		function begin() {
+			ctx.save();
+			//ctx.drawImage(buf, 0, 0, buf.width, buf.height);
+			for (i = 0; i < 20; i++) {
+				var rad = Math.random() * 50;
+				var x = Math.random() * can.width;
+				var y = Math.random() * can.height;
+				var col;
+				if (rad >= radius) {
+					col = danger[parseInt(Math.random() * danger.length)];
+				} else {
+					col = safe[parseInt(Math.random() * safe.length)];
+				}
+				ctx.beginPath();
+				ctx.fillStyle = col;
+				ctx.arc(x, y, rad, 0, 2 * Math.PI, false);
+				ctx.fill();
+			}
+			ctx.font = "20px Tahoma";
+			ctx.fillStyle = "#F2F613";
+			ctx.fillText("Welcome to World of Colors.", 100, 75);
+			ctx.fillText("Eat the smaller balls/non-red shades", 100, 100);
+			ctx.fillText("&", 100, 125);
+			ctx.fillText("Avoid bigger/red-shaded balls.", 100, 150);
+			ctx.fillText("The bigger you eat, the more you score.", 100, 175);
+			ctx.fillText("Click anywhere to begin.", 100, 200);
+			ctx.restore();
+		}
+/*
+		function rectify() {
+			if (balls.length > maxballs) {
+				balls.length = maxballs;
+			}
+		}
+*/
+		function defaulti() {
+			var first = new Ball();
+			first.x = can.length / 2;
+			first.y = can.width / 2;
+			first.radius = radius;
+			first.color = "#FFFFFF";
+			first.speed = 0;
+			first.drift = 0;
+			balls.unshift(first);
+		}
+
+		function repaints() {
+			for (var i = 1; i < balls.length; i++) {
+				if (balls[i].radius > radius) {
+					balls[i].color = danger[parseInt(Math.random() * 10)];
+				} else {
+					balls[i].color = safe[parseInt(Math.random() * 10)];
+				}
+			}
+		}
+
+		function start() {
+			if (!gameStarted) {
+				//endgame();
+				gameStarted = 1;
+				//clearInterval(simAnimate);
+				//balltimer = setInterval(addBalls, 50);
+				points = 0;
+				blank(bufctx);
+				blank(ctx);
+	 			animateTime = setInterval(animate, 40);
+	 			ensured = setInterval(ensure, 1000);
+			}
+		}
+
+		function animate() {
+			update();
+			draw();
+			overlap();
+			showPoints();
+		}
+
+		function ensure() {
+			splice(14, 2);
+			addBalls();
+			addBalls();
+		}
+		/*
+		function simAnimate() {
+			update();
+			draw();
+		}
+		*/
+		function update() {
+			reaction++;
+			for (var i = 1; i < balls.length; i++) {
+				if (balls[i].y < ctx.canvas.height) {
+					balls[i].y += balls[i].speed;
+					if (balls[i].y > ctx.canvas.height - 10) {
+						balls[i].y = 10;
+					} else if (balls[i].y < 0) {
+						balls[i].y = ctx.canvas.height - 10;
+					}
+					balls[i].x += balls[i].drift;
+					if (balls[i].x > ctx.canvas.width) {
+						balls[i].x = 0;
+					} else if (balls[i].x < 0) {
+						balls[i].x = ctx.canvas.width;
+					}
+				}
+				if (balls[i].react == reaction) {
+					balls[i].drift *= -1;
+					balls[i].speed *= -1;
+				}
+			}
+			if (reaction > 250) {
+				reaction = 0;
+			}
+		}
+
+		function draw() {
+			bufctx.save();
+			blank(bufctx);
+			blank(ctx);
+			for (var  i = 0; i < balls.length; i++) {
+				if (balls[i].radius == radius && i != 0) {
+					balls.splice(i, 1);
+					addBalls();
+					continue;
+				}
+				bufctx.beginPath();
+				bufctx.fillStyle = balls[i].color;
+				bufctx.arc(balls[i].x, balls[i].y, balls[i].radius, 0, 2 * Math.PI, false);
+				bufctx.fill();
+			}
+			ctx.drawImage(buf, 0, 0, buf.width, buf.height);
+			bufctx.restore();
+			console.log(balls[0].radius);
+		}
+
+		function cursor(e) {
+			balls[0].x = e.clientX;
+			balls[0].y = e.clientY;
+			//overlap(e);
+		}
+		
+		function overlap() {
+			for (var  i = 1; i < balls.length; i++) {
+				if ((distance(balls[0].x, balls[0].y, balls[i].x, balls[i].y)) <= (radius + balls[i].radius)) {
+					decide(i);
+				}
+			}
+		}
+
+		function decide(i) {
+			if (balls[0].radius < balls[i].radius) {
+				endgame();
+			} else {
+				points += parseInt((balls[i].radius * balls[0].radius * balls[i].radius) / 10);
+				if (highscore < points) {
+					highscore = points;
+				}
+				if (balls[0].radius < MAX_RAD) {
+					if (balls[0].radius < 35) {
+						balls[0].radius += balls[i].radius / 40;
+					} else if (balls[0].radius > 35) {
+						balls[0].radius += balls[i].radius / 100;
+					} else {
+						balls[0].radius += balls[i].radius / 150;
+					}
+					radius = balls[0].radius;
+				}
+				balls.splice(i, 1);
+				//console.log("Removed" + balls.length);
+				addBalls();
+				//showPoints();
+			}
+		}
+
+		function showPoints() {
+			bufctx.save();
+			bufctx.font = "20px Tahoma";
+			bufctx.fillStyle = "#FFFFFF";
+			bufctx.fillText(("Points : " + points), 250, 30);
+			bufctx.fillText(("High Score : " + highscore), 40, 30);
+			ctx.drawImage(buf, 0, 0, buf.width, buf.height);
+			//ctx.fillStyle = "#F2F613";
+			bufctx.restore();
+			//console.log(points);
+		}
+
+		function endgame() {
+			clearInterval(animateTime);
+			clearInterval(balltimer);
+			clearInterval(ensured);
+			console.log(points);
+			animateTime = null;
+			balltimer = null;
+			//points = 0;
+			balls = [];
+			reaction = 0;
+			gameStarted = 0;
+			radius = 15;
+			//ended = 1;
+			endd();
+			defaulti();
+			balltimer = setInterval(addBalls, 70);
+		}
+
+		function endd() {
+			bufctx.save();
+			bufctx.font = "20px Tahoma"
+			bufctx.fillStyle = "#FFFFFF";
+			bufctx.fillText(("Game Ended!\nYou scored " + points + " points.\nClick to restart."), ((can.width / 2) - (can.width / 5)), (can.height / 2));
+			bufctx.restore();
+			ctx.drawImage(buf, 0, 0, buf.width, buf.height);
+		}
+
+		function distance(x1, y1, x2, y2) {
+			return Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2));
+		}
+
+		function Ball() {
+			//this.radius = radius;
+			this.radius = 7 + Math.round((Math.random() * 2 * radius));
+			if (radius > 25) {
+				this.radius = 8 + Math.round((Math.random() * 1.75 * radius));
+			} else if (radius > 35) {
+				this.radius = 8 + Math.round((Math.random() * 1.5 * radius));
+			} else if (radius > 45) {
+				this.radius = 10 + Math.round((Math.random() * 1.2 * radius));
+			}
+			if (this.radius > radius) {
+				this.color = danger[parseInt(Math.random() * danger.length)];
+				this.acc = 0;
+			} else {
+				this.color = safe[parseInt(Math.random() * safe.length)];
+				this.acc = 1;
+			}
+			this.react = Math.round(Math.random() * 200);
+			this.x = Math.round(Math.random() * ctx.canvas.width);
+			this.y = -5;
+			//this.y = -10;
+			this.drift = -5 + Math.round(Math.random() * 10);
+			this.speed = 0
+			while (this.speed == 0) {
+				this.speed = -4 + Math.round(Math.random() * 8);
+			}
+		}
+
+		function addBalls() {
+			//console.log("Added @ " + balls.length);
+			balls[balls.length] = new Ball();
+			if (balls.length >= maxballs) {
+				clearInterval(balltimer);
+			}
+		}
+
+		function blank(context) {
+			context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+		}
+
+		function respond() {
+			can.width = window.innerWidth;
+			can.height = window.innerHeight;
+			buf.width = window.innerWidth;
+			buf.height = window.innerHeight;
+		}
+
+	</script>
+</head>
+<body>
+	<section id='main'>
+		<canvas id='can'>
+			NO SUPPORT
+		</canvas>
+		<canvas id='buf'>
+			NO SUPPORT
+		</canvas>
+	</section>
+</body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-67823568-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</html>

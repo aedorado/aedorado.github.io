@@ -1,0 +1,134 @@
+<!doctype html5>
+
+<html>
+<head>
+<link rel="icon" type="image/png" href="icon.png">
+<title>CONNECT 5</title>
+<!-- <script type="text/javascript" src="phonegap.js"></script> -->
+<link type="text/css" rel="stylesheet" href="style/style.css">
+<link type="text/css" rel="stylesheet" href="style/fontello.css">
+<link type="text/css" rel="stylesheet" href="style/animation.css">
+</head>
+
+<body>
+
+<article>
+	<div id="start-screen">
+		<div id="title">CONNECT 5</div>
+		<br><br>
+		<div id="start-screen-buttons">
+			<div id="start-button">START</div>
+			<div id="rules">
+			2 players play turn by turn by clicking/tapping a block.<br>
+			The one to connect 5 blocks (horizontally, vertically, or diagonally) is the winner.
+			</div>
+		</div>
+	</div>
+
+	<div id="game-screen">
+		<div id="game-divs-container">
+			<div class="game-div" id="game-div-00"></div>
+			<div class="game-div" id="game-div-01"></div>
+			<div class="game-div" id="game-div-02"></div>
+			<div class="game-div" id="game-div-03"></div>
+			<div class="game-div" id="game-div-04"></div>
+			<div class="game-div" id="game-div-05"></div>
+			<div class="game-div" id="game-div-06"></div>
+			<div class="game-div" id="game-div-07"></div>
+
+			<div class="game-div" id="game-div-10"></div>
+			<div class="game-div" id="game-div-11"></div>
+			<div class="game-div" id="game-div-12"></div>
+			<div class="game-div" id="game-div-13"></div>
+			<div class="game-div" id="game-div-14"></div>
+			<div class="game-div" id="game-div-15"></div>
+			<div class="game-div" id="game-div-16"></div>
+			<div class="game-div" id="game-div-17"></div>
+
+			<div class="game-div" id="game-div-20"></div>
+			<div class="game-div" id="game-div-21"></div>
+			<div class="game-div" id="game-div-22"></div>
+			<div class="game-div" id="game-div-23"></div>
+			<div class="game-div" id="game-div-24"></div>
+			<div class="game-div" id="game-div-25"></div>
+			<div class="game-div" id="game-div-26"></div>
+			<div class="game-div" id="game-div-27"></div>
+
+			<div class="game-div" id="game-div-30"></div>
+			<div class="game-div" id="game-div-31"></div>
+			<div class="game-div" id="game-div-32"></div>
+			<div class="game-div" id="game-div-33"></div>
+			<div class="game-div" id="game-div-34"></div>
+			<div class="game-div" id="game-div-35"></div>
+			<div class="game-div" id="game-div-36"></div>
+			<div class="game-div" id="game-div-37"></div>
+
+			<div class="game-div" id="game-div-40"></div>
+			<div class="game-div" id="game-div-41"></div>
+			<div class="game-div" id="game-div-42"></div>
+			<div class="game-div" id="game-div-43"></div>
+			<div class="game-div" id="game-div-44"></div>
+			<div class="game-div" id="game-div-45"></div>
+			<div class="game-div" id="game-div-46"></div>
+			<div class="game-div" id="game-div-47"></div>
+
+			<div class="game-div" id="game-div-50"></div>
+			<div class="game-div" id="game-div-51"></div>
+			<div class="game-div" id="game-div-52"></div>
+			<div class="game-div" id="game-div-53"></div>
+			<div class="game-div" id="game-div-54"></div>
+			<div class="game-div" id="game-div-55"></div>
+			<div class="game-div" id="game-div-56"></div>
+			<div class="game-div" id="game-div-57"></div>
+
+			<div class="game-div" id="game-div-60"></div>
+			<div class="game-div" id="game-div-61"></div>
+			<div class="game-div" id="game-div-62"></div>
+			<div class="game-div" id="game-div-63"></div>
+			<div class="game-div" id="game-div-64"></div>
+			<div class="game-div" id="game-div-65"></div>
+			<div class="game-div" id="game-div-66"></div>
+			<div class="game-div" id="game-div-67"></div>
+
+			<div class="game-div" id="game-div-70"></div>
+			<div class="game-div" id="game-div-71"></div>
+			<div class="game-div" id="game-div-72"></div>
+			<div class="game-div" id="game-div-73"></div>
+			<div class="game-div" id="game-div-74"></div>
+			<div class="game-div" id="game-div-75"></div>
+			<div class="game-div" id="game-div-76"></div>
+			<div class="game-div" id="game-div-77"></div>
+		</div>
+
+		<footer id="footer">
+			<span class="option" id="retire">Retire<i class="icon-cancel-circled"></i></span>
+			<!-- <span class="option" id="toggle-sound">Music<i class="icon-megaphone"></i></span> -->
+			<span class="option" id="undo">Undo<i class="icon-left-open"></i></span>
+		</footer>
+	</div>
+
+	<div id="winner"><div id="winner-details"></div></div>
+
+</article>
+
+<audio id="background">
+	<source src="audio/background.mp3" type="audio/mpeg">
+</audio>
+
+</body>
+
+<script src="js/jquery-2.1.3.min.js">
+</script>
+<script src="js/script.js">
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-67823568-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</html>

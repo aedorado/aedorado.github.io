@@ -1,0 +1,172 @@
+html {
+	height: 100%;
+	width: 100%;
+}
+
+@font-face {
+    font-family: oxygen;
+    src: url('font/Oxygen-Regular.ttf');
+}
+
+body {
+	background: url('img/back2.jpg') 0 0 / 100% 100%;
+	font-family: oxygen;
+	overflow: hidden;
+	text-align: center;
+}
+
+#click-div-group {
+	position: absolute;
+	bottom: 5%;
+	width: 98%;
+}
+
+.click-div {
+	position: relative;
+	float: left;
+	width: 15%;
+	font-size: 28px;
+	position: relative;
+	transition: all 1s ease;
+	border-radius: 50% 50%;
+	margin-left: 5%;
+	margin-right: 5%;
+	text-align: center;
+	padding:  0 0 0;
+	z-index: 0;
+	background-color: rgb(255, 255, 255);
+	color: black;
+	overflow: hidden;
+}
+
+.openup {
+	position: absolute;
+	width: 0;
+	height: 0;
+	top: 50%;
+	left: 50%;
+	border-radius: 50%;
+	z-index: 5;
+	transition: all .4s ease;
+}
+
+.click-div:hover .openup {
+	height: 101%;
+	width: 101%;
+	top: 0%;
+	left: 0%;
+}
+
+.content {
+  position: absolute;
+  font-size: 15vmin;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+}
+
+.click-div:hover {
+	cursor: pointer;
+}
+
+#display {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  height: 40%;
+  width: 40%;
+  text-align: center;
+  font-size: 37.5vmin;
+  transition: all .5 ease;
+}
+
+#openup-1 {
+	background-color: #F7CA18;
+}
+
+#openup-2 {
+	background-color: #4183D7;
+}
+
+#openup-3 {
+	background-color: #2ECC71;
+}
+
+#openup-4 {
+	background-color: #F22613;
+}
+
+#display-content {
+	transition: all .25s ease;
+	color: white;
+}
+
+.invisible {
+	opacity: 0;
+}
+
+.pimg {
+	width: 100%;
+	height: 100%;
+  transition: all .5s ease;
+}
+
+#image-group-1 {
+	left: 0;
+}
+
+#image-group-2 {
+	right: 0;
+}
+
+#game-div {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+	transition: all 1s ease;
+}
+
+#start-div {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	z-index: 10;
+	transition: all 1s ease;
+}
+
+#title {
+	width: 50%;
+	position: absolute;
+	left: 25%;
+	top: 15px;
+	background: rgb(255, 255, 255);
+	border-radius: 50%;
+	transition: all 1s ease-out;
+	max-width: 450px;
+}
+
+#rules {
+  background: rgb(255, 255, 255);
+  width: 60%;
+  margin-left: calc(15% - 30px);
+  padding: 15px;
+  border-radius: 20px;
+  position: absolute;
+  bottom: 8%;
+}
+
+.image-group {
+  position: absolute;
+  height: 50%;
+  width: 30%;
+  top: 0;
+}
+
+.win {
+	width: 100%;
+	position: relative;
+	bottom: 40px;
+}

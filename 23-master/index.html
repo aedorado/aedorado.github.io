@@ -1,0 +1,51 @@
+<html>
+<head>
+	<title>GAME</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+	<article>
+		<div id="start-div">
+			<div id="title"><div class="content">23</div></div>
+			<div id="rules">
+				2 player turn based game.<br>
+				Each player in his turn pics a number from 1 to 4.<br>
+				The one who reaches 23 is the winner.<br>
+				Click to begin.
+			</div>
+		</div>
+		<div id="game-div" class="invisible">
+			<div class="image-group" id="image-group-1">
+				<img class="pimg" id="p1" src="img/p1.JPG">
+				<img src="img/win.png" class="win invisible" id="win-1">
+			</div>
+			<div id="display"><div id="display-content">0</div></div>
+			<div id="click-div-group">
+				<div id="click-div-1" class="click-div" onclick="addDisplay(1)"><div id="openup-1" class="openup"></div><div class="content">1</div></div>
+				<div id="click-div-2" class="click-div" onclick="addDisplay(2)"><div id="openup-2" class="openup"></div><div class="content">2</div></div>
+				<div id="click-div-3" class="click-div" onclick="addDisplay(3)"><div id="openup-3" class="openup"></div><div class="content">3</div></div>
+				<div id="click-div-4" class="click-div" onclick="addDisplay(4)"><div id="openup-4" class="openup"></div><div class="content">4</div></div>
+			</div>
+			<div class="image-group" id="image-group-2">
+				<img class="pimg" id="p2" src="img/p2.JPG">
+				<img src="img/win.png" class="win invisible" id="win-2">
+			</div>
+		</div>
+	</article>
+
+</body>
+
+<script type="text/javascript" src="script.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-67823568-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</html>
