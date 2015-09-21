@@ -1,4 +1,4 @@
-var WINNUM =  Math.floor((Math.random() * 30) + 15);  
+var WINNUM =  23;
 var WAIT = false;
 var STARTED = false;
 
