@@ -111,8 +111,10 @@ $.getJSON( "data.json", function(datum) {
     }
     sortable = [];
     for (var name in map) {
-      sortable.push([name, map[name]]);
-      maxdays = Math.max(maxdays, map[name]);
+      if (map[name] >= 3) {
+        sortable.push([name, map[name]]);
+        maxdays = Math.max(maxdays, map[name]);
+      }
     }
     sortable.sort(function(a, b) {return a[0].localeCompare(b[0])});
   }
