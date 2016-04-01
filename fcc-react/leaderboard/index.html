@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Leaderboard</title>
+
+	<style>
+
+		* {
+			margin: 0px;
+		}
+
+		h2#heading {
+			text-align: center;
+			margin-top: 16px;
+		}
+
+		#content {
+			width: 80%;
+			position: relative;
+			left: 10%;
+		}
+
+		table {
+			width: 100%;
+			border: 2px solid #19B5FE;
+			border-radius: 4px;
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		thead {
+			background-color: #19B5FE;
+			color: white;
+			font-weight: 400;
+		}
+
+		thead tr {
+			height: 40px;
+			font-size: 18px;
+		}
+
+		tbody tr:nth-child(even) {
+			position: relative;
+			background-color: #ddd;
+			/*color: white;*/
+		}
+
+		tbody tr:nth-child(odd) {
+			position: relative;
+			/*background-color: #eee;*/
+		}
+
+		td {
+			text-align: center;
+			position: relative;
+		}
+
+		td img {
+			height: 35px;
+			width: 35px;
+			position: relative;
+			margin: 2px;
+			border: 1px solid black;
+			border-radius: 2px;
+			left: -25%;
+		}
+
+		a span {
+			position: absolute;
+			top: 12px;
+			left: 35%;
+			color: black;
+			text-decoration: underline;
+		}
+
+		#profile-link {	
+			left: calc(50% - 110px);
+			position: relative;
+			bottom: 2px;
+		}
+
+		#code-link {
+			left: calc(50% + 5px);
+			position: relative;
+		}
+
+		#code-link img {
+			height: 60px;
+			width: 60px;
+		}
+
+		#profile-link img {
+			height: 52px;
+			width: 52px;
+		}
+
+	</style>
+
+	<script src="../static/js/react/react.js"></script>
+    <script src="../static/js/react/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
+
+</head>
+
+<body>
+	<h2 id="heading">LEADERBOARD</h2>
+  	<div id="link-div">
+  		<a href="https://github.com/aedorado/fcc-react" id="code-link"><img src="../static/svg/github.svg"></a>
+  		<a href="http://aedorado.github.io" id="profile-link"><img src="../static/svg/github-face.svg"></a>
+ 	</div>
+  	<div id="content"></div>
+</body>
+
+<script type="text/babel">
+
+	var TableRow = React.createClass({
+
+		render: function() {
+			var link = 'http://www.freecodecamp.com/' + this.props.data.username;
+			return (
+				<tr>
+					<td>{this.props.num}</td>
+					<td><a href={link}><img src={this.props.data.img} /><span>{this.props.data.username}</span></a></td>
+					<td>{this.props.data.recent}</td>
+					<td>{this.props.data.alltime}</td>
+				</tr>
+			);
+		}
+
+	});
+
+	var LeaderBoard = React.createClass({
+
+		getInitialState: function() {
+			return {	sorted:'recent'	}
+		},
+
+		sortAll: function() {
+			if (this.state.sorted !== 'alltime') {
+				// this.props.alldata.sort(function(a, b) {
+				// 	return a.alltime < b.alltime;
+				// });
+				this.setState({sorted:'alltime'});
+			}
+		},
+		
+		sortRecent: function() {
+			if (this.state.sorted !== 'recent') {
+				// this.props.alldata.sort(function(a, b) {
+				// 	return a.recent < b.recent;
+				// });
+				this.setState({sorted:'recent'});
+			}
+		},
+
+		render: function() {
+
+			var rows = [];
+			if (this.state.sorted === 'recent') {
+				this.props.recentdata.forEach(function(datum, i) {
+					rows.push(<TableRow data={datum} key={i} num={i+1} />);
+				});
+			} else if (this.state.sorted === 'alltime') {
+				this.props.alldata.forEach(function(datum, i) {
+					rows.push(<TableRow data={datum} key={i} num={i+1} />);
+				});
+			}
+
+			return (
+				<table>
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Camper Name</th>
+							<th onClick={this.sortRecent}>Points in 30 days</th>
+							<th onClick={this.sortAll}>All time points</th>
+						</tr>
+					</thead>
+					<tbody>{rows}</tbody>
+				</table>
+			)
+		}
+
+	});
+
+	$(document).ready(function() {
+		$.ajax({
+			url: 'http://fcctop100.herokuapp.com/api/fccusers/top/recent'
+		}).done(function(response) {
+			var recent = response;
+			$.ajax({
+				url: 'http://fcctop100.herokuapp.com/api/fccusers/top/alltime'
+			}).done(function(response) {
+				ReactDOM.render(<LeaderBoard alldata={response} recentdata={recent} />, document.getElementById('content'));
+			});
+		});
+	});
+
+
+
+</script>
+
+</html>
