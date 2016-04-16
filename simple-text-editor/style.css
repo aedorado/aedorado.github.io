@@ -1,0 +1,93 @@
+body {
+	font-family: candara;
+	color: #22A7F0;
+}
+
+#head {
+	text-align: center;
+}
+
+#container {
+	position: relative;
+	margin: 0px;
+	width: 100%;
+	min-width: 640px;
+}
+
+#container > div {
+	position: relative;
+	margin: 16px auto;
+	width: 80%;
+}
+
+#notepad {
+	color: black;
+	background-color: white;
+	border: 2px solid #eee;
+	border-radius: 5px;
+	padding: 8px;
+}
+
+#checkbox-div {
+	text-align: center;;
+    width: 80%;
+    margin-top: 32px;
+}
+
+.notepad-paragraph {
+	background-color: #eee;
+	padding: 5px;
+	border-radius: 5px;
+	word-wrap: break-word;
+}
+
+.over {
+	/*border: 2px solid dashed;*/
+	background-color: #aaa;
+}
+
+
+
+#tooltip {
+	display: none;
+	position: absolute;
+	background: black;
+    color: white;
+    width: 165px;
+    font-size: 2em;
+    border-radius: 5px;
+    padding: 4px;
+    transform: translate(-50%, 10%);
+}
+
+.tooltip-option {
+	width: 35px;
+    /*margin-left: 0px;*/
+    cursor: pointer;
+    background-color: black;
+    border: none;
+    color: white;
+    font-size: 1em;
+}
+
+.links {
+	width: 100%;
+	margin: 16px;
+}
+
+#links div {
+	font-size: 1.3em;
+	cursor: pointer;
+}
+
+#links div:nth-child(odd) {
+	color: red;
+}
+
+#links div:nth-child(even) {
+	color: blue;
+}
+
+.placeholder {
+	opacity: 0.5;
+}
