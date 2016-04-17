@@ -156,3 +156,45 @@ function clearAllLinks() {
 	    linksdiv.removeChild(linksdiv.firstChild);	// remove firstchild fo linksdiv
 	}
 }
+
+// add eventListener to the checkbox
+document.getElementById('check-editable').addEventListener('click', function() { 
+	var allParagraphs = document.querySelectorAll('p.notepad-paragraph');
+	if (this.checked) {
+		clearAllLinks();	// remove links from links div
+		[].forEach.call(allParagraphs, function(para) {
+			para.setAttribute('contenteditable', true);
+			para.setAttribute('draggable', false);
+		});
+	} else {
+		consolidateLinks();	// add links to linksdiv
+		[].forEach.call(allParagraphs, function(para) {
+			para.setAttribute('contenteditable', false);
+			para.setAttribute('draggable', true);
+		});
+	}
+}, false);
+
+// randomizing
+document.getElementById('randomize').addEventListener('click', function() {
+	var allParagraphs = document.querySelectorAll('p.notepad-paragraph');
+	[].forEach.call(allParagraphs, function(para) {	// foreach paragraph
+		var html = para.innerHTML;
+		console.log(html);
+		var fourLettered = html.match(/\b[a-zA-Z]{4}\b/g) || [];	// get all 4 lettered words
+		[].forEach.call(fourLettered, function(word) {	// for each 4-lettered word
+			if (word === 'span') {
+				return ;
+			}
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {	// callback
+				if (xhttp.readyState == 4 && xhttp.status == 200) {
+				 	html = html.replace(word, xhttp.responseText);
+				 	para.innerHTML = html;	// replace html of paragraph in closure with each response
+				}
+			};
+			xhttp.open("GET", "http://randomword.setgetgo.com/get.php", true);
+			xhttp.send();
+		});
+	});
+}, false);

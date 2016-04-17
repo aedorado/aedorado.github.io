@@ -158,20 +158,3 @@ document.addEventListener('keydown', function(e) {
 
 	}
 }, false);
-
-document.getElementById('check-editable').addEventListener('click', function() { 
-	var allParagraphs = document.querySelectorAll('p');
-	if (this.checked) {
-		clearAllLinks();	// remove links from links div
-		[].forEach.call(allParagraphs, function(para) {
-			para.setAttribute('contenteditable', true);
-			para.setAttribute('draggable', false);
-		});
-	} else {
-		consolidateLinks();	// add links to linksdiv
-		[].forEach.call(allParagraphs, function(para) {
-			para.setAttribute('contenteditable', false);
-			para.setAttribute('draggable', true);
-		});
-	}
-}, false);

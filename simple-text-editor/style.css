@@ -72,7 +72,7 @@ body {
 
 .links {
 	width: 100%;
-	margin: 16px;
+	margin: 16px 0;
 }
 
 #links div {
@@ -90,4 +90,23 @@ body {
 
 .placeholder {
 	opacity: 0.5;
+}
+
+#randomize {
+	display: inline-block;
+	padding: 6px 6px;
+	margin-bottom: 18px;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 1.42;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+	border: none;
+	border-radius: 4px;
+	color: #fff;
+	background-color: #d9534f;
+	border-color: #d43f3a;
+	width: 110px;
+	position: relative;
 }
