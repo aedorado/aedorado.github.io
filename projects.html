@@ -1,4 +1,4 @@
-
+<!-- <meta http-equiv="refresh" content="4"> -->
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -12,29 +12,40 @@
  
   <style>
 
+  @font-face {
+    font-family: 'AaarghNormal';
+    src: url('static/font/Aaargh-webfont.woff') format('woff'),
+         url('static/font/Aaargh-webfont.ttf') format('truetype'),
+         url('static/font/Aaargh-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
   body {
     background-color: rgb(24,24,73);
     font-family: AaarghNormal;
-    /*background: url('static/img/materialplanet.png') 0 0 / 100% 100%;*/
+    text-align: center;
   }
 
+  #container {
+    width: 100%;
+    text-align: center;
+  }
 
   .demo-card-square.mdl-card {
     width: 22%;
-    height: 320px;
+    height: 300px;
     max-width: 320px;
-    min-width: 280px;
+    min-width: 190px;
+    float: left;
+    margin: 2% 1.5%;
+    position: relative;
+    text-align: left;
   }
   .demo-card-square > .mdl-card__title {
     color: #fff;
-    /*background:*/
-      /*url('../assets/demos/dog.png') bottom right 15% no-repeat #46B6AC;*/
   }
 
-  #container > div {
-    float: left;
-    margin: 1.5%;
-  }
 
   .mdl-card__title-text {
     background: rgba(0, 0, 0, 0.55);
@@ -46,15 +57,16 @@
      color: rgba(0,0,0,1); 
      font-size: 1em; 
   }
-
+/*642 420*/
   </style>
 </head>
 
 <body>
   
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <header class="custom-header mdl-layout__header mdl-layout__header--waterfall">
           <div class="mdl-layout__header-row">
-              <span class="mdl-layout-title">ANURAG EL DORADO</span>
+              <span class="mdl-layout-title  mdl-layout--large-screen-only">ANURAG EL DORADO</span>
               <div class="mdl-layout-spacer"></div>
               <nav class="mdl-navigation">
                   <a onclick="draw('all')"  class="mdl-button mdl-js-button mdl-button--white mdl-js-ripple-effect" style="color:white" id="github" data-upgraded=",MaterialButton,MaterialRipple" tabindex="0">&lt;&lt; ALL<span class="mdl-button__ripple-container"><span class="mdl-ripple is-animating correction-on-span"></span></span></a>
@@ -64,10 +76,9 @@
           </div>
       </header>
 
-
   <div id="container"></div>
 
-    
+    </div>
 <!-- <div class="demo-card-square mdl-card mdl-shadow--2dp">
   <div class="mdl-card__title mdl-card--expand">
     <h2 class="mdl-card__title-text">Update</h2>
