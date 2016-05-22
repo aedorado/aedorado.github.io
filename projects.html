@@ -27,8 +27,8 @@
   }
   .demo-card-square > .mdl-card__title {
     color: #fff;
-    background:
-      url('../assets/demos/dog.png') bottom right 15% no-repeat #46B6AC;
+    /*background:*/
+      /*url('../assets/demos/dog.png') bottom right 15% no-repeat #46B6AC;*/
   }
 
   #container > div {
@@ -54,13 +54,12 @@
   
         <header class="custom-header mdl-layout__header mdl-layout__header--waterfall">
           <div class="mdl-layout__header-row">
-              <!-- <span class="mdl-layout-title">Brandon Himpfen</span> -->
+              <span class="mdl-layout-title">ANURAG EL DORADO</span>
               <div class="mdl-layout-spacer"></div>
               <nav class="mdl-navigation">
-                  <a  href="projects.html"  class="mdl-button mdl-js-button mdl-button--white mdl-js-ripple-effect" style="color:white" id="github" data-upgraded=",MaterialButton,MaterialRipple" tabindex="0">Projects<span class="mdl-button__ripple-container"><span class="mdl-ripple is-animating correction-on-span"></span></span></a>
+                  <a onclick="draw('all')"  class="mdl-button mdl-js-button mdl-button--white mdl-js-ripple-effect" style="color:white" id="github" data-upgraded=",MaterialButton,MaterialRipple" tabindex="0">&lt;&lt; ALL<span class="mdl-button__ripple-container"><span class="mdl-ripple is-animating correction-on-span"></span></span></a>
+                  <a  href="index.html"  class="mdl-button mdl-js-button mdl-button--white mdl-js-ripple-effect" style="color:white" id="github" data-upgraded=",MaterialButton,MaterialRipple" tabindex="0">Home<span class="mdl-button__ripple-container"><span class="mdl-ripple is-animating correction-on-span"></span></span></a>
                   <a class="mdl-button mdl-js-button mdl-button--white mdl-js-ripple-effect" style="color:white" id="github" data-upgraded=",MaterialButton,MaterialRipple" tabindex="0">Resume<span class="mdl-button__ripple-container"><span class="mdl-ripple is-animating correction-on-span"></span></span></a>
-                  <a class="mdl-button mdl-js-button mdl-button--white mdl-js-ripple-effect" style="color:white" href="" id="github" data-upgraded=",MaterialButton,MaterialRipple" tabindex="0">Blog<span class="mdl-button__ripple-container"><span class="mdl-ripple is-animating correction-on-span"></span></span></a>
-                  <!-- <a class="mdl-navigation__link" href=""><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Button</button></a> -->
               </nav>
           </div>
       </header>
@@ -152,25 +151,29 @@ function draw(expand) {
       name: 'Amazon Updates',
       desc: 'Never miss the lowest price on Amazon again.',
       img : 'static/img/projects/amazon.png',
-      link: 'https://github.com/aedorado/amazon-updates'
+      link: 'https://github.com/aedorado/amazon-updates',
+      expand: ''
     },
     {
       name: 'Codechef-Gitter',
       desc: 'Save all codechef solutions to github.',
       img : 'static/img/projects/codechef.png',
-      link: 'https://github.com/aedorado/codechef-gitter'
+      link: 'https://github.com/aedorado/codechef-gitter',
+      expand: ''
     },
     {
       name: 'D3-visuals',
       desc: 'Interactive charts using d3.js',
       img : 'static/img/projects/d3.png',
-      link: 'https://github.com/aedorado/d3-visuals'
+      link: 'https://github.com/aedorado/d3-visuals',
+      expand: ''
     },
     {
       name: 'Min',
       desc: 'Multiplayer Game using socket.io',
       img : 'static/img/projects/min.PNG',
-      link: '23-aedorado.rhcloud.com'
+      link: '23-aedorado.rhcloud.com',
+      expand: ''
     },
     {
       name: 'Lykpic.com',
@@ -180,7 +183,7 @@ function draw(expand) {
     },
   ];
 
-  document.querySelector('nav a').childNodes[0].textContent = 'PROJECTS';
+  document.querySelector('nav a').style.display = 'none';
 
   if (expand == 'college') {
       var projects = [
@@ -188,19 +191,22 @@ function draw(expand) {
             name: 'Citaion Network Analysis',
             desc: 'Microsoft Academic Research Dataset Analysis using Hadoop.',
             img : 'static/img/projects/hadoop.png',
-            link: 'https://github.com/hadoop-cafe/mcad-citation-network'
+            link: 'https://github.com/hadoop-cafe/mcad-citation-network',
+            expand: ''
           },
           {
             name: 'C-proxy',
             desc: 'HTTP proxy server in C++',
             img : '',
-            link: 'https://github.com/aedorado/c-proxy'
+            link: 'https://github.com/aedorado/c-proxy',
+            expand: ''
           },
           {
             name: 'Chat Application',
             desc: 'Cross platform chat application in Java.',
             img : '',
-            link: 'https://github.com/aedorado/multi-client-chat-application'
+            link: 'https://github.com/aedorado/multi-client-chat-application',
+            expand: ''
           },
           {
             name: 'E-crop',
@@ -209,101 +215,128 @@ function draw(expand) {
             link : ''
           }
         ];
-        document.querySelector('nav a').childNodes[0].textContent = 'VIEW ALL PROJECTS';
+        document.querySelector('nav a').style.display = 'block';
   } else if (expand == 'phonegap') {
       var projects = [
           {
             name: 'Square It',
             desc: 'First person to create a square wins..',
             img : '',
-            link: 'https://github.com/aedorado/square-it'
+            link: 'https://github.com/aedorado/square-it',
+            expand: ''
           },
           {
             name: 'Connect 5',
             desc: 'First person to connect 5 wins.',
             img : '',
-            link: 'https://github.com/aedorado/connect5'
+            link: 'https://github.com/aedorado/connect5',
+            expand: ''
           }
         ];
-        document.querySelector('nav a').childNodes[0].textContent = 'VIEW ALL PROJECTS';
+        document.querySelector('nav a').style.display = 'block';
   } else if (expand == 'fcc-react') { 
       var projects = [
           {
             name: 'Game Of Life',
             desc: 'Game of life in reactjs.',
             img : 'static/img/projects/gameoflife.PNG',
-            link: 'http://aedorado.github.io/fcc-react/game-of-life/'
+            link: 'http://aedorado.github.io/fcc-react/game-of-life/',
+            expand: ''
           },
           {
             name: 'Recipie Box',
             desc: 'Save and edit your favorite recipies.',
             img : 'static/img/projects/recipie.PNG',
-            link: 'http://aedorado.github.io/fcc-react/recipie-box/'
+            link: 'http://aedorado.github.io/fcc-react/recipie-box/',
+            expand: ''
           },
           {
             name: 'Leaderboard',
             desc: 'Simple leaderboard.',
             img : 'static/img/projects/leader.PNG',
-            link: 'http://aedorado.github.io/fcc-react/leaderboard/'
+            link: 'http://aedorado.github.io/fcc-react/leaderboard/',
+            expand: ''
           },
           {
             name: 'Markdown Preview',
             desc: 'Instant preview of markdown.',
             img : 'static/img/projects/md.PNG',
-            link: 'http://aedorado.github.io/fcc-react/markdown-preview/'
+            link: 'http://aedorado.github.io/fcc-react/markdown-preview/',
+            expand: ''
           },
         ];
-        document.querySelector('nav a').childNodes[0].textContent = 'VIEW ALL PROJECTS';
+        document.querySelector('nav a').style.display = 'block';
   } else if (expand == 'extensions') {
         var projects = [
           {
             name: 'Exty-switchy',
             desc: 'Easy way to enable disable chrome extensions.',
             img : 'static/img/projects/ext-switchy.png',
-            link: 'https://github.com/aedorado/ext-control-panel'
+            link: 'https://github.com/aedorado/ext-control-panel',
+            expand: ''
           },
           {
             name: 'Redirecto',
             desc: 'Redirect one webstie to another.',
             img : 'static/img/projects/redirecto.png',
-            link: 'https://github.com/aedorado/redirecto'
+            link: 'https://github.com/aedorado/redirecto',
+            expand: ''
           }
         ];
-        document.querySelector('nav a').childNodes[0].textContent = 'VIEW ALL PROJECTS';
+        document.querySelector('nav a').style.display = 'block';
   } else if (expand == 'web') {
         var projects = [
+          {
+            name: 'To-do List',
+            desc: 'Simple to-do list',
+            img : 'static/img/projects/todo.png',
+            link: 'http://aedorado.github.io/vanilla-todo/',
+            expand: ''
+          },
+          {
+            name: '23',
+            desc: 'Game Theory',
+            img : 'static/img/projects/edior.png',
+            link: 'http://aedorado.github.io/simple-text-editor/',
+            expand: ''
+          },
           {
             name: '23',
             desc: 'Game Theory',
             img : 'static/img/projects/23.png',
-            link: 'http://aedorado.github.io/23-master/'
+            link: 'http://aedorado.github.io/23-master/',
+            expand: ''
           },
           {
             name: 'Factors and Multiples',
             desc: 'Know your numbers.',
             img : 'static/img/projects/famg.png',
-            link: 'http://aedorado.github.io/factors-and-multiples-game-II-master/'
+            link: 'http://aedorado.github.io/factors-and-multiples-game-II-master/',
+            expand: ''
           },
           {
             name: 'Hangman',
             desc: 'A classic reenacted.',
             img : 'static/img/projects/hangman.png',
-            link: 'http://phpapps-aedorado.rhcloud.com/hangman/'
+            link: 'http://phpapps-aedorado.rhcloud.com/hangman/',
+            expand: ''
           },
           {
             name: 'Hungerballs',
             desc: 'Eat \'em all.',
             img : 'static/img/projects/hungerballs.png',
-            link: 'http://aedorado.github.io/hungerballs'
+            link: 'http://aedorado.github.io/hungerballs',
+            expand: ''
           },
           {
             name: 'Wordmaster',
             desc: 'Test your vocabs.',
             img : 'static/img/projects/wordmaster.png',
-            link: 'http://phpapps-aedorado.rhcloud.com/wordmaster/'
+            link: 'http://phpapps-aedorado.rhcloud.com/wordmaster/',
+            expand: ''
           }
         ];
-        document.querySelector('nav a').childNodes[0].textContent = 'VIEW ALL PROJECTS';
+        document.querySelector('nav a').style.display = 'block';
   }
 
   var html = '';
