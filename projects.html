@@ -138,6 +138,13 @@ function draw(expand) {
       expand: ''
     },
     {
+      name: 'D3-visuals',
+      desc: 'Interactive charts using d3.js',
+      img : 'static/img/projects/d3.png',
+      link: '',
+      expand: 'd3'
+    },
+    {
       name: 'Chrome Extensions',
       desc: 'Simple yet useful.',
       img : 'static/img/projects/chrome.svg',
@@ -173,17 +180,10 @@ function draw(expand) {
       expand: ''
     },
     {
-      name: 'D3-visuals',
-      desc: 'Interactive charts using d3.js',
-      img : 'static/img/projects/d3.png',
-      link: 'https://github.com/aedorado/d3-visuals',
-      expand: ''
-    },
-    {
       name: 'Min',
       desc: 'Multiplayer Game using socket.io',
       img : 'static/img/projects/min.png',
-      link: '23-aedorado.rhcloud.com',
+      link: 'http://23-aedorado.rhcloud.com',
       expand: ''
     },
     {
@@ -251,28 +251,28 @@ function draw(expand) {
             name: 'Game Of Life',
             desc: 'Game of life in reactjs.',
             img : 'static/img/projects/gameoflife.png',
-            link: 'http://aedorado.github.io/fcc-react/game-of-life/',
+            link: 'projects/fcc-react/game-of-life/',
             expand: ''
           },
           {
             name: 'Recipie Box',
             desc: 'Save and edit your favorite recipies.',
             img : 'static/img/projects/recipie.png',
-            link: 'http://aedorado.github.io/fcc-react/recipie-box/',
+            link: 'projects/fcc-react/recipie-box/',
             expand: ''
           },
           {
             name: 'Leaderboard',
             desc: 'Simple leaderboard.',
             img : 'static/img/projects/leader.png',
-            link: 'http://aedorado.github.io/fcc-react/leaderboard/',
+            link: 'projects/fcc-react/leaderboard/',
             expand: ''
           },
           {
             name: 'Markdown Preview',
             desc: 'Instant preview of markdown.',
             img : 'static/img/projects/md.png',
-            link: 'http://aedorado.github.io/fcc-react/markdown-preview/',
+            link: 'projects/fcc-react/markdown-preview/',
             expand: ''
           },
         ];
@@ -301,28 +301,28 @@ function draw(expand) {
             name: 'To-do List',
             desc: 'Simple to-do list',
             img : 'static/img/projects/todo.png',
-            link: 'http://aedorado.github.io/vanilla-todo/',
+            link: 'projects/vanilla-todo/',
             expand: ''
           },
           {
             name: 'Simple Text Editor',
             desc: 'A simple text editor with a dash of fun.',
             img : 'static/img/projects/edior.png',
-            link: 'http://aedorado.github.io/simple-text-editor/',
+            link: 'projects/simple-text-editor/',
             expand: ''
           },
           {
             name: '23',
             desc: 'Game Theory',
             img : 'static/img/projects/23.png',
-            link: 'http://aedorado.github.io/23-master/',
+            link: 'projects/23-master/',
             expand: ''
           },
           {
             name: 'Factors and Multiples',
             desc: 'Know your numbers.',
             img : 'static/img/projects/famg.png',
-            link: 'http://aedorado.github.io/factors-and-multiples-game-II-master/',
+            link: 'projects/factors-and-multiples-game-II-master/',
             expand: ''
           },
           {
@@ -336,7 +336,7 @@ function draw(expand) {
             name: 'Hungerballs',
             desc: 'Eat \'em all.',
             img : 'static/img/projects/hungerballs.png',
-            link: 'http://aedorado.github.io/hungerballs',
+            link: 'projects/hungerballs',
             expand: ''
           },
           {
@@ -344,6 +344,24 @@ function draw(expand) {
             desc: 'Test your vocabs.',
             img : 'static/img/projects/wordmaster.png',
             link: 'http://phpapps-aedorado.rhcloud.com/wordmaster/',
+            expand: ''
+          }
+        ];
+        document.querySelector('nav a').style.display = 'block';
+  } else if (expand === "d3") {
+        var projects = [
+          {
+            name: 'Volunteer Rating',
+            desc: 'Ratings of volunteers at a local NGO.',
+            img : 'static/img/projects/d3-rating.png',
+            link: 'projects/d3-visuals/index.html',
+            expand: ''
+          },
+          {
+            name: 'CF Heatmap',
+            desc: 'Heatmap of submissions on codeforces.',
+            img : 'static/img/projects/cf-heat.png',
+            link: 'projects/cf-heatmap/index.html',
             expand: ''
           }
         ];
