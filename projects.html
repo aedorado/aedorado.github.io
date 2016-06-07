@@ -36,7 +36,7 @@
     width: 22%;
     height: 300px;
     max-width: 320px;
-    min-width: 190px;
+    min-width: 180px;
     float: left;
     margin: 2% 1.5%;
     position: relative;
@@ -57,6 +57,34 @@
      color: rgba(0,0,0,1); 
      font-size: 1em; 
   }
+
+  .mdl-button {
+    min-width: 32px;
+  }
+
+  @media only screen and (max-width: 880px) {
+    .demo-card-square.mdl-card {
+      width: 30%;
+    }
+
+  }
+
+  @media only screen and (max-width: 610px) {
+    .demo-card-square.mdl-card {
+      width: 47%;
+    }
+   .mdl-layout__header-row span {
+      position: absolute;
+      top: 19px;
+      left: 12px;
+      font-size: 4vmin;
+    }
+    .mdl-button {
+      padding: 0 14px;
+    }
+  }
+
+
 /*642 420*/
   </style>
 </head>
@@ -79,21 +107,7 @@
   <div id="container"></div>
 
     </div>
-<!-- <div class="demo-card-square mdl-card mdl-shadow--2dp">
-  <div class="mdl-card__title mdl-card--expand">
-    <h2 class="mdl-card__title-text">Update</h2>
-  </div>
-  <div class="mdl-card__supporting-text">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Aenan convallis.
-  </div>
-  <div class="mdl-card__actions mdl-card--border">
-    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-      View Updates
-    </a>
-  </div>
-</div>
-
+<!-- 
 <div class="demo-card-square mdl-card mdl-shadow--2dp">
   <div class="mdl-card__title mdl-card--expand">
     <h2 class="mdl-card__title-text">Update</h2>
@@ -107,11 +121,8 @@
       View Updates
     </a>
   </div>
-</div> -->
-
-
-
-
+</div>
+ -->
 </body>
 
 <script>
