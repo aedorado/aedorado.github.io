@@ -67,6 +67,10 @@
     cursor: pointer;
   }
 
+  #line-year {
+    position: relative;
+    margin-left: 10px;
+  }
   /* 
   bootstrap classes
   */
@@ -104,12 +108,13 @@
     <label><input type="radio" class="participantTypeRadio" name="participantType" value="C">Contest</label>
     <label><input type="radio" class="participantTypeRadio" name="participantType" value="P">Practice</label>
     <label><input type="radio" class="participantTypeRadio" name="participantType" value="V">Virtual</label>
+    <select name="line-year" id="line-year"></select>
   </form>
   <div id="stats"></div>
-  <div id="heat-map-div" class="calender-map">
-  </div>
-  <img id="loading-gif" src="load.svg" alt="">
+  <img id="loading-gif" src="img/load.svg">
+  <div id="linechart-div"></div>
+  <div id="heat-map-div" class="calender-map"></div>
   <script type="text/javascript" src="filters.js"></script>
   <script type="text/javascript" src="mapper.js"></script>
-  <script src="../../analytics.js"></script>
+  <script type="text/javascript" src="linechart.js"></script>
 </body></html>

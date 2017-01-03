@@ -1,5 +1,6 @@
 var results;
 var user;
+var sentname, gotname;
 
 function apicall(username) {
     var success = false;
@@ -7,15 +8,21 @@ function apicall(username) {
     window.location.hash = '#' + user;
     document.getElementById('loading-gif').style.display = 'inline';
     document.getElementById('heat-map-div').innerHTML = '';
+    document.getElementById('linechart-div').innerHTML = '';
+    document.getElementById('line-year').innerHTML = '';
     document.getElementById('stats').innerHTML = '';
     var url = 'http://codeforces.com/api/user.status?handle=' + user;
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (xhttp.readyState == 4 && xhttp.status == 200) {
           if ((JSON.parse(xhttp.responseText)).status === "OK") {
-                success = true;
-                results = (JSON.parse(xhttp.responseText)).result;
-                process(results);
+                gotname = username;
+                if (sentname == gotname) {
+                    success = true;
+                    results = (JSON.parse(xhttp.responseText)).result;
+                    process(results);
+                    linechart(results);
+                }
           } else if (xhttp.status == 400) {
               document.getElementById('heat-map-div').innerHTML = 'Call failed.';
           }
@@ -23,12 +30,13 @@ function apicall(username) {
     };
     xhttp.open("GET", url, true);
     xhttp.send();
+    sentname = username;
     setTimeout(function() {
         if (!success) {
             // document.getElementById('loading-gif').style.display = 'none';
             document.getElementById('heat-map-div').innerHTML = 'Request is taking too long. Either the handle is invalid or the connection is slow.';
         }
-    }, 16000);
+    }, 18000);
 }
 
 function process(results) {
@@ -163,7 +171,6 @@ function mapdata(count, minYear, maxYear) {
 
     d3.selectAll('rect').on('mouseover', function(d) {
             if (this.getAttribute('data-title') != null) {
-
                 tooltip.style('display', 'block');
                 tooltip.html(this.getAttribute('data-title'))
                     .style('left', (d3.event.pageX + 5) + 'px')
@@ -175,7 +182,7 @@ function mapdata(count, minYear, maxYear) {
         });
 
     document.querySelector('input[type=radio]').checked = true;
-    plot(count);
+    plotHM(count);
 
     function monthPath(t0) {
         var t1 = new Date(t0.getFullYear(), t0.getMonth() + 1, 0),
@@ -212,18 +219,15 @@ function getStats(data) {
 }
 
 // plot data on the map
-function plot(data) {
+function plotHM(data) {
     var stats = getStats(data);
-    var color = d3.scale.linear().range(["#d6e685", '#A50026']).domain([1, stats['maxsub']]);
-
+    var color = d3.scale.linear().range(["#d6e685", '#1e6823']).domain([1, stats['maxsub']]);
     rect.transition().duration(750).
     attr("fill", function(d) {
         return (d in data) ? color(data[d]): 'white';
-    })
-    .attr("data-title", function(d) {
+    }).attr("data-title", function(d) {
         return (d in data) ? (d.substring(6) + '/' + d.substring(4, 6)) + " Submissions: " + data[d]: null;
-    })
-
+    });
 }
 
 if (window.location.hash) {
@@ -234,13 +238,13 @@ var radiobuttons = document.querySelectorAll('input[type=radio]');
 for (var i = 0; i < radiobuttons.length; i++) {
     radiobuttons[i].addEventListener('click', function() {
         if (this.value === 'A') {
-            plot(filterNormally(results));
+            plotHM(filterNormally(results));
         } else if (this.value == 'C') {
-            plot(filterParticipantType(results, "CONTESTANT"));
+            plotHM(filterParticipantType(results, "CONTESTANT"));
         } else if (this.value == 'P') {
-            plot(filterParticipantType(results, "PRACTICE"));
+            plotHM(filterParticipantType(results, "PRACTICE"));
         } else if (this.value == 'V') {
-            plot(filterParticipantType(results, "VIRTUAL"));
+            plotHM(filterParticipantType(results, "VIRTUAL"));
         }
     }, false);
 }
