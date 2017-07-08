@@ -2,6 +2,7 @@
 
 // add the document fragment to a new paragraph
 addParagraph = function(frag) {
+	// console.log(frag.textContent);
 	var newp = document.createElement('p');	// create paragraph
 	newp.classList.add('notepad-paragraph');	// add clsses
 	newp.setAttribute('contenteditable', 'true');	// set attributes
@@ -53,7 +54,7 @@ extractContentsFromCaret = function() {
         		blockEl = blockEl.nextSibling;	
         	}
         }
-        if (blockEl) {
+        if (blockEl.tagName == 'P') {
         	var range = selRange.cloneRange();
         	range.selectNodeContents(blockEl);
         	range.setStart(selRange.endContainer, selRange.endOffset);
@@ -114,7 +115,6 @@ document.addEventListener('keydown', function(e) {
 			if (frag.textContent.charAt(0) == ' ') { // remove space if it si first character
 				frag.textContent = frag.textContent.substring(1);
 			}
-
 			addParagraph(frag)
 		}
 

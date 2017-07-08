@@ -153,35 +153,11 @@ function draw(expand) {
       target: ''
     },
     {
-      name: 'D3-visuals',
-      desc: 'Interactive charts using d3.js',
-      img : 'static/img/projects/d3.png',
-      link: '',
-      expand: 'd3',
-      target: ''
-    },
-    {
       name: 'Chrome Extensions',
       desc: 'Simple yet useful.',
       img : 'static/img/projects/chrome.svg',
       link: '',
       expand: 'extensions',
-      target: ''
-    },
-    {
-      name: 'FCC-React',
-      desc: 'Reactjs projects on freecodecamp.com',
-      img : 'static/img/projects/freecode.png',
-      link: '',
-      expand: 'fcc-react',
-      target: ''
-    },
-    {
-      name: 'Simple Web Apps',
-      desc: 'Simple web applications.',
-      img : 'static/img/projects/web.png',
-      link: '',
-      expand: 'web',
       target: ''
     },
     {
@@ -193,11 +169,11 @@ function draw(expand) {
       target: ''
     },
     {
-      name: 'Codechef-Gitter',
-      desc: 'Save all codechef solutions to github.',
-      img : 'static/img/projects/codechef.png',
-      link: 'https://github.com/aedorado/codechef-gitter',
-      expand: '',
+      name: 'D3-visuals',
+      desc: 'Interactive charts using d3.js',
+      img : 'static/img/projects/d3.png',
+      link: '',
+      expand: 'd3',
       target: ''
     },
     {
@@ -205,6 +181,38 @@ function draw(expand) {
       desc: 'Multiplayer Game using socket.io',
       img : 'static/img/projects/min.png',
       link: 'http://23-aedorado.rhcloud.com',
+      expand: '',
+      target: ''
+    },
+    {
+      name: 'Simple Web Apps',
+      desc: 'Simple web applications.',
+      img : 'static/img/projects/web.png',
+      link: '',
+      expand: 'web',
+      target: ''
+    },
+    {
+      name: 'FCC-React',
+      desc: 'Reactjs projects on freecodecamp.com',
+      img : 'static/img/projects/freecode.png',
+      link: '',
+      expand: 'fcc-react',
+      target: ''
+    },
+    {
+      name: 'Phonegap Apps',
+      desc: 'Simple phonegap apps.',
+      img : 'static/img/projects/pgap.png',
+      link: '',
+      expand: 'phonegap',
+      target: ''
+    },
+    {
+      name: 'Codechef-Gitter',
+      desc: 'Save all codechef solutions to github.',
+      img : 'static/img/projects/codechef.png',
+      link: 'https://github.com/aedorado/codechef-gitter',
       expand: '',
       target: ''
     },
@@ -231,6 +239,14 @@ function draw(expand) {
             target: ''
           },
           {
+            name: 'MVC vs PAC Software Architechture',
+            desc: 'Coparison of MVC and PAC architechtural styles.',
+            img : 'static/img/projects/mvc.png',
+            link: 'https://github.com/aedorado/mvc-vs-pac',
+            expand: '',
+            target: '_blank'
+          },
+          {
             name: 'Shelter Animal Outcome',
             desc: 'Predicting fate of animals brought to animal shelter.',
             img : 'static/img/projects/ml1.jpg',
@@ -246,22 +262,22 @@ function draw(expand) {
             expand: '',
             target: '_blank'
           },
-          {
-            name: 'License Plate Detection',
-            desc: 'Extracting characters on license plates.',
-            img : 'static/img/projects/lpr.jpg',
-            link : NO_LINK,
-            expand: '',
-            target: '_blank'
-          },
-          {
-            name: 'Sybil Attack Detection in WSNs',
-            desc: 'A technique to detect sybil attack in WSNs.',
-            img : 'static/img/projects/wsn.jpg',
-            link : NO_LINK,
-            expand: '',
-            target: '_blank'
-          },
+          // {
+          //   name: 'License Plate Detection',
+          //   desc: 'Extracting characters on license plates.',
+          //   img : 'static/img/projects/lpr.jpg',
+          //   link : NO_LINK,
+          //   expand: '',
+          //   target: '_blank'
+          // },
+          // {
+          //   name: 'Sybil Attack Detection in WSNs',
+          //   desc: 'A technique to detect sybil attack in WSNs.',
+          //   img : 'static/img/projects/wsn.jpg',
+          //   link : NO_LINK,
+          //   expand: '',
+          //   target: '_blank'
+          // },
           {
             name: 'C-proxy',
             desc: 'HTTP proxy server in C++',
@@ -292,19 +308,19 @@ function draw(expand) {
           {
             name: 'Square It',
             desc: 'First person to create a square wins..',
-            img : '',
-            link: 'https://github.com/aedorado/square-it',
+            img : 'static/img/projects/sqit.png',
+            link: 'projects/square-it-master/index.html',
             expand: '',
-            target: '_blank'
+            target: ''
           },
-          {
-            name: 'Connect 5',
-            desc: 'First person to connect 5 wins.',
-            img : '',
-            link: 'https://github.com/aedorado/connect5',
-            expand: '',
-            target: '_blank'
-          }
+          // {
+          //   name: 'Connect 5',
+          //   desc: 'First person to connect 5 wins.',
+          //   img : '',
+          //   link: 'https://github.com/aedorado/connect5',
+          //   expand: '',
+          //   target: '_blank'
+          // }
         ];
         document.querySelector('nav a').style.display = 'block';
   } else if (expand == 'fcc-react') { 
